@@ -18,7 +18,7 @@ from opencensus.stats import stats as stats_module
 from opencensus.stats import view as view_module
 from opencensus.tags import tag_map as tag_map_module
 from opencensus.trace import config_integration
-from opencensus.ext.azure.trace_exporter import AzureExporterFt
+from opencensus.ext.azure.trace_exporter import AzureExporter
 from opencensus.trace.samplers import ProbabilitySampler
 from opencensus.trace.tracer import Tracer
 from opencensus.ext.flask.flask_middleware import FlaskMiddleware
@@ -122,7 +122,7 @@ def index():
             properties = {'custom_dimensions': {'Dogs Vote': vote2}}
             # TODO: use logger object to log dog vote
             logger.info('Dogs Vote', extra=properties)
-            
+
             return render_template("index.html", value1=int(vote1), value2=int(vote2), button1=button1, button2=button2, title=title)
 
         else:
