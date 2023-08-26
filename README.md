@@ -294,10 +294,10 @@ The script above will take a few minutes to create VMSS and related resources. O
       # Find the login server address of your registry
       az acr show --name myacr202106 --query loginServer --output table
       # Associate a tag to the local image. You can use a different tag (say v2, v3, v4, ....) everytime you edit the underlying image. 
-      docker tag azure-vote-front:v1 myacr202106.azurecr.io/azure-vote-front:v1
-      # Now you will see myacr202106.azurecr.io/azure-vote-front:v1 if you run docker images
+      docker tag azure-vote-front:v1 project4acrazurecr.io/azure-vote-front:v1
+      # Now you will see project4acrazurecr.io/azure-vote-front:v1 if you run docker images
       # Push the local registry to remote ACR
-      docker push myacr202106.azurecr.io/azure-vote-front:v1
+      docker push project4acrazurecr.io/azure-vote-front:v1
       # Verify if you image is up in the cloud.
       az acr repository list --name myacr202106 --output table
       # Associate the AKS cluster with the ACR repository
@@ -308,7 +308,7 @@ The script above will take a few minutes to create VMSS and related resources. O
       ```bash
       # Get the ACR login server name
       az acr show --name myacr202106 --query loginServer --output table
-      # Make sure that the manifest file *azure-vote-all-in-one-redis.yaml*, has `myacr202106.azurecr.io/azure-vote-front:v1` as the image path.  
+      # Make sure that the manifest file *azure-vote-all-in-one-redis.yaml*, has `project4acrazurecr.io/azure-vote-front:v1` as the image path.  
       # Deploy the application. Run the command below from the parent directory where the *azure-vote-all-in-one-redis.yaml* file is present. 
       kubectl apply -f azure-vote-all-in-one-redis.yaml
       # Test the application at the External IP
@@ -319,7 +319,7 @@ The script above will take a few minutes to create VMSS and related resources. O
       # Check the status of each node
       kubectl get pods
       # In case you wish to change the image in ACR, you can redeploy using:
-      kubectl set image deployment azure-vote-front azure-vote-front=myacr202106.azurecr.io/azure-vote-front:v1      
+      kubectl set image deployment azure-vote-front azure-vote-front=project4acrazurecr.io/azure-vote-front:v1      
       # Push your changes so far to the Github repo, preferably in the Deploy_to_AKS branch
       ```
 
